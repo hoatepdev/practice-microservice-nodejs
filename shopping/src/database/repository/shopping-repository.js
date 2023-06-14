@@ -1,4 +1,4 @@
-const { CustomerModel, ProductModel, OrderModel } = require("../models");
+const { CartModel, OrderModel } = require("../models");
 const { v4: uuidv4 } = require("uuid");
 const { APIError, BadRequestError } = require("../../utils/app-errors");
 
@@ -22,8 +22,11 @@ class ShoppingRepository {
   async Cart(customerId) {
     try {
       const cartItems = await CartModel.find({
-        customerId: customerId,
+        customerId,
       });
+      if (cartItems) {
+        return cartItems;
+      }
 
       throw new Error("Data not found!");
     } catch (error) {
@@ -70,7 +73,6 @@ class ShoppingRepository {
       });
     }
   }
-
   async CreateNewOrder(customerId, txnId) {
     //required to verify payment through TxnId
 

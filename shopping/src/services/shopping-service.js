@@ -59,10 +59,10 @@ class ShoppingService {
     const { userId, product, qty } = data;
 
     switch (event) {
-      case "ADD_TO_CART":
+      case "ADD_TO_CARD":
         this.ManageCart(userId, product, qty, false);
         break;
-      case "REMOVE_FROM_CART":
+      case "REMOVE_FROM_CARD":
         this.ManageCart(userId, product, qty, true);
         break;
       default:

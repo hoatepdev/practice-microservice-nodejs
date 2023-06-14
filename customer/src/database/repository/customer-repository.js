@@ -69,11 +69,12 @@ class CustomerRepository {
 
   async FindCustomerById({ id }) {
     try {
-      const existingCustomer = await CustomerModel.findById(id)
-        .populate("address")
-        .populate("wishlist")
-        .populate("orders")
-        .populate("cart.product");
+      const existingCustomer = await CustomerModel.findById(id).populate(
+        "address"
+      );
+      // .populate("wishlist")
+      // .populate("orders")
+      // .populate("cart.product");
       return existingCustomer;
     } catch (err) {
       throw new APIError(
@@ -152,60 +153,42 @@ class CustomerRepository {
     }
   }
 
-  async AddCartItem(
-    customerId,
-    { _id, name, desc, price, availabel, banner },
-    qty,
-    isRemove
-  ) {
-    try {
-      const profile = await CustomerModel.findById(customerId).populate(
-        "cart.product"
-      );
+  async AddCartItem(customerId, { _id, name, price, banner }, qty, isRemove) {
+    const profile = await CustomerModel.findById(customerId).populate("cart");
+    if (profile) {
+      const cartItem = {
+        product: { _id, name, price, banner },
+        unit: qty,
+      };
 
-      if (profile) {
-        const cartItem = {
-          product: { _id, name, price, banner },
-          unit: qty,
-        };
+      let cartItems = profile.cart;
 
-        let cartItems = profile.cart;
-
-        if (cartItems.length > 0) {
-          let isExist = false;
-          cartItems.map((item) => {
-            if (item.product._id.toString() === product._id.toString()) {
-              if (isRemove) {
-                cartItems.splice(cartItems.indexOf(item), 1);
-              } else {
-                item.unit = qty;
-              }
-              isExist = true;
+      if (cartItems.length > 0) {
+        let isExist = false;
+        cartItems.map((item) => {
+          if (item.product._id.toString() === _id.toString()) {
+            if (isRemove) {
+              cartItems.splice(cartItems.indexOf(item), 1);
+            } else {
+              item.unit = qty;
             }
-          });
-
-          if (!isExist) {
-            cartItems.push(cartItem);
+            isExist = true;
           }
-        } else {
+        });
+
+        if (!isExist) {
           cartItems.push(cartItem);
         }
-
-        profile.cart = cartItems;
-
-        const cartSaveResult = await profile.save();
-
-        return cartSaveResult;
+      } else {
+        cartItems.push(cartItem);
       }
 
-      throw new Error("Unable to add to cart!");
-    } catch (err) {
-      throw new APIError(
-        "API Error",
-        STATUS_CODES.INTERNAL_ERROR,
-        "Unable to Create Customer"
-      );
+      profile.cart = cartItems;
+
+      return await profile.save();
     }
+
+    throw new Error("Unable to add to cart!");
   }
 
   async AddOrderToProfile(customerId, order) {

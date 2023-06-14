@@ -1,0 +1,6 @@
+{"level":"error","message":"Wed Jun 14 2023 18:47:49 GMT+0700 (Indochina Time)-{\"name\":\"Data Not found\",\"statusCode\":{},\"isOperational\":true}","private":true}
+{"level":"error","message":"Wed Jun 14 2023 20:07:40 GMT+0700 (Indochina Time)-{\"name\":\"Data Not found\",\"statusCode\":{\"name\":\"API Error\",\"statusCode\":500,\"isOperational\":true},\"isOperational\":true}","private":true}
+{"level":"error","message":"Wed Jun 14 2023 20:14:28 GMT+0700 (Indochina Time)-{\"name\":\"Data Not found\",\"statusCode\":{\"name\":\"API Error\",\"statusCode\":500,\"isOperational\":true},\"isOperational\":true}","private":true}
+{"level":"error","message":"Wed Jun 14 2023 20:58:11 GMT+0700 (Indochina Time)-{\"expose\":true,\"statusCode\":400,\"status\":400,\"body\":\"\\n\\n\\n\\n\\n\",\"type\":\"entity.parse.failed\"}","private":true}
+{"level":"error","message":"Wed Jun 14 2023 21:10:56 GMT+0700 (Indochina Time)-{\"expose\":true,\"statusCode\":400,\"status\":400,\"body\":\"\\n\\n\\n\\n\\n\",\"type\":\"entity.parse.failed\"}","private":true}
+{"level":"error","message":"Wed Jun 14 2023 21:11:38 GMT+0700 (Indochina Time)-{\"expose\":true,\"statusCode\":400,\"status\":400,\"body\":\"\\n\\n\\n\\n\\n\",\"type\":\"entity.parse.failed\"}","private":true}

@@ -14,7 +14,6 @@ const StartServer = async () => {
       console.log(`listening to port ${PORT}`);
     })
     .on("error", (err) => {
-      console.log(err);
       process.exit();
     });
 };

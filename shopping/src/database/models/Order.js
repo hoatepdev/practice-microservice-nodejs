@@ -8,7 +8,7 @@ const OrderSchema = new Schema(
     customerId: String,
     amount: Number,
     status: String,
-    txnId: String,
+    txnNumber: String,
     items: [
       {
         product: {
