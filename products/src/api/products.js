@@ -1,9 +1,9 @@
 const ProductService = require("../services/product-service");
 const UserAuth = require("./middlewares/auth");
+const { PublishMessage } = require("../utils");
+const { CUMTOMER_BINDING_KEY, SHOPPING_BINDING_KEY } = require("../config");
 
-const { PublishCustomerEvent, PublishShoppingEvent } = require("../utils");
-
-module.exports = (app) => {
+module.exports = (app, channel) => {
   const service = new ProductService();
   //   const customerService = new PublishCustomerEvent();
 
@@ -72,7 +72,7 @@ module.exports = (app) => {
     );
 
     try {
-      PublishCustomerEvent(data);
+      PublishMessage(channel, CUMTOMER_BINDING_KEY, JSON.stringify(data));
 
       return res.status(200).json(data.data);
     } catch (err) {}
@@ -89,9 +89,9 @@ module.exports = (app) => {
         "REMOVE_FROM_WISHLIST"
       );
 
-      PublishCustomerEvent(data);
+      PublishMessage(channel, CUMTOMER_BINDING_KEY, JSON.stringify(data));
 
-      return res.status(200).json(data.data);
+      return res.status(200).json(data.data.product);
     } catch (err) {
       next(err);
     }
@@ -107,8 +107,8 @@ module.exports = (app) => {
         "ADD_TO_CARD"
       );
 
-      PublishCustomerEvent(data);
-      PublishShoppingEvent(data);
+      PublishMessage(channel, CUMTOMER_BINDING_KEY, JSON.stringify(data));
+      PublishMessage(channel, SHOPPING_BINDING_KEY, JSON.stringify(data));
 
       const response = {
         product: data.data.product,
@@ -131,8 +131,8 @@ module.exports = (app) => {
         "REMOVE_FROM_CARD"
       );
 
-      PublishCustomerEvent(data);
-      PublishShoppingEvent(data);
+      PublishMessage(channel, CUMTOMER_BINDING_KEY, JSON.stringify(data));
+      PublishMessage(channel, SHOPPING_BINDING_KEY, JSON.stringify(data));
 
       const response = {
         product: data.data.product,

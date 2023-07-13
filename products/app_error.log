@@ -7,3 +7,4 @@
 {"level":"error","message":"Wed Jun 14 2023 20:50:58 GMT+0700 (Indochina Time)-{}","private":true}
 {"level":"error","message":"Wed Jun 14 2023 20:51:32 GMT+0700 (Indochina Time)-{}","private":true}
 {"level":"error","message":"Wed Jun 14 2023 20:52:08 GMT+0700 (Indochina Time)-{}","private":true}
+{"level":"error","message":"Fri Jul 14 2023 02:01:04 GMT+0700 (Indochina Time)-{\"expose\":true,\"statusCode\":400,\"status\":400,\"body\":\"{\\n    \\\"name\\\":\\\"Broccoli\\\",\\n    \\\"desc\\\":\\\"great Quality of Fresh Vegetable\\\",\\n    \\\"type\\\":\\\"vegetables\\\",\\n    \\\"banner\\\":\\\"http://codergogoi.com/youtube/images/broccoli.jpeg\\\",\\n    \\\"unit\\\":1,\\n    \\\"price\\\":280, \\n    \\\"available\\\":true,\\n    \\\"suplier\\\":\\\"Golden seed firming\\\"\\n},\",\"type\":\"entity.parse.failed\"}","private":true}
