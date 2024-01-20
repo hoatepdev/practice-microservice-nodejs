@@ -14,12 +14,17 @@ class CustomerService {
     this.repository = new CustomerRepository();
   }
 
+  async GetAll() {
+    const data = await this.repository.FindAll()
+    return data
+  }
+
   async SignIn(userInputs) {
     const { email, password } = userInputs;
-
+    console.log(userInputs)
     try {
       const existingCustomer = await this.repository.FindCustomer({ email });
-
+      console.log("existingCustomer", existingCustomer)
       if (existingCustomer) {
         const validPassword = await ValidatePassword(
           password,
@@ -129,7 +134,6 @@ class CustomerService {
   }
 
   async ManageCart(customerId, product, qty, isRemove) {
-    console.log("132123123123")
     try {
       const cartResult = await this.repository.AddCartItem(
         customerId,

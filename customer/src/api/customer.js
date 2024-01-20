@@ -7,6 +7,11 @@ module.exports = (app, channel) => {
 
   SubscribeMessage(channel, service);
 
+  app.get("/all", async (req, res) => {
+    const data = await service.GetAll()
+    return res.json(data);
+  })
+
   app.post("/signup", async (req, res, next) => {
     try {
       const { email, password, phone } = req.body;

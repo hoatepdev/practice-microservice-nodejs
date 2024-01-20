@@ -7,6 +7,11 @@ const {
 
 //Dealing with data base operations
 class CustomerRepository {
+
+  async FindAll() {
+    const data = await CustomerModel.find({})
+    return data
+  }
   async CreateCustomer({ email, password, phone, salt }) {
     try {
       const customer = new CustomerModel({
@@ -59,6 +64,7 @@ class CustomerRepository {
       const existingCustomer = await CustomerModel.findOne({ email: email });
       return existingCustomer;
     } catch (err) {
+      console.log("err", err)
       throw new APIError(
         "API Error",
         STATUS_CODES.INTERNAL_ERROR,
