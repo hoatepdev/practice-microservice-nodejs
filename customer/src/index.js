@@ -14,10 +14,11 @@ const StartServer = async () => {
   await expressApp(app, channel);
 
   app
-    .listen(PORT, () => {
-      console.log(`listening to port ${PORT}`);
+    .listen(8001, () => {
+      console.log(`listening to port ${8001}`);
     })
     .on("error", (err) => {
+      console.log(err)
       process.exit();
     });
 };

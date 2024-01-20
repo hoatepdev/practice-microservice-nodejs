@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 // const axios = require("axios");
 const {
@@ -11,11 +11,11 @@ const amqplib = require("amqplib");
 
 //Utility functions
 module.exports.GenerateSalt = async () => {
-  return await bcrypt.genSalt();
+  return await bcryptjs.genSalt();
 };
 
 module.exports.GeneratePassword = async (password, salt) => {
-  return await bcrypt.hash(password, salt);
+  return await bcryptjs.hash(password, salt);
 };
 
 module.exports.ValidatePassword = async (
@@ -82,6 +82,7 @@ module.exports.CreateChannel = async () => {
 
 module.exports.PublishMessage = async (channel, binding_key, message) => {
   try {
+    console.log("Message has been sent: ", message)
     return channel.publish(EXCHANGE_NAME, binding_key, Buffer.from(message));
   } catch (error) {
     throw error;
@@ -96,7 +97,7 @@ module.exports.SubscribeMessage = async (channel, service, binding_key) => {
   channel.bindQueue(appQueue.queue, EXCHANGE_NAME, binding_key);
 
   channel.consume(appQueue.queue, (data) => {
-    console.log("received data", data.content.toString());
+    console.log("Received data: ", data.content.toString());
     channel.ack(data);
   });
 };

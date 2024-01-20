@@ -4,3 +4,5 @@
 {"level":"error","message":"Wed Jun 14 2023 20:58:11 GMT+0700 (Indochina Time)-{\"expose\":true,\"statusCode\":400,\"status\":400,\"body\":\"\\n\\n\\n\\n\\n\",\"type\":\"entity.parse.failed\"}","private":true}
 {"level":"error","message":"Wed Jun 14 2023 21:10:56 GMT+0700 (Indochina Time)-{\"expose\":true,\"statusCode\":400,\"status\":400,\"body\":\"\\n\\n\\n\\n\\n\",\"type\":\"entity.parse.failed\"}","private":true}
 {"level":"error","message":"Wed Jun 14 2023 21:11:38 GMT+0700 (Indochina Time)-{\"expose\":true,\"statusCode\":400,\"status\":400,\"body\":\"\\n\\n\\n\\n\\n\",\"type\":\"entity.parse.failed\"}","private":true}
+{"level":"error","message":"Mon Oct 02 2023 21:26:29 GMT+0700 (Indochina Time)-{\"name\":\"Data Not found\",\"statusCode\":{},\"isOperational\":true}","private":true}
+{"level":"error","message":"Sat Oct 07 2023 13:06:45 GMT+0000 (Coordinated Universal Time)-{\"name\":\"Data Not found\",\"statusCode\":{},\"isOperational\":true}","private":true}

@@ -63,6 +63,9 @@ class ProductService {
     }
   }
 
+
+
+
   async GetProductById(productId) {
     try {
       return await this.repository.FindById(productId);
@@ -85,7 +88,7 @@ class ProductService {
       };
       return FormateData(payload);
     } else {
-      return FormateData({ error: "No product availabel" });
+      return FormateData({ error: "No product available" });
     }
   }
 }

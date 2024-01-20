@@ -1,1 +1,8 @@
+customer/node_modules
+products/node_modules
+shopping/node_modules
 node_modules
+db
+app_error.log
+.DS_Store
+.idea

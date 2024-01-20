@@ -41,7 +41,6 @@ module.exports = (app, channel) => {
     const { _id } = req.user;
     try {
       const { data } = await service.getCart({ _id });
-      Z;
       return res.status(200).json(data);
     } catch (err) {
       next(err);

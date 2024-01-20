@@ -154,6 +154,8 @@ class CustomerRepository {
   }
 
   async AddCartItem(customerId, { _id, name, price, banner }, qty, isRemove) {
+
+    console.log("hqwgejbjhg21jh3gjh1g2312")
     const profile = await CustomerModel.findById(customerId).populate("cart");
     if (profile) {
       const cartItem = {
@@ -183,6 +185,7 @@ class CustomerRepository {
         cartItems.push(cartItem);
       }
 
+console.log(cartItems)
       profile.cart = cartItems;
 
       return await profile.save();
